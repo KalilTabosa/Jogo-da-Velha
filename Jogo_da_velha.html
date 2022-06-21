@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jogo da Velha</title>
+</head>
+<body>
+    
+    <h1 class='titulo'>
+        Jogo Da Velha
+    </h1>
+
+    <div class='pai'>
+        <div class='boxes'></div>
+        <div class='boxes'></div>
+        <div class='boxes'></div>
+        <div class='boxes'></div>
+        <div class='boxes'></div>
+        <div class='boxes'></div>
+        <div class='boxes'></div>
+        <div class='boxes'></div>
+        <div class='boxes'></div>
+    </div>
+
+    <style>
+
+        body{
+            background-color: aquamarine;
+        }
+        .pai{
+            display: flex;
+           flex-wrap: wrap;
+           width: 306px;
+           margin: auto;
+        }
+
+        .boxes{
+            width: 100px;
+            height: 100px;
+            border: 1px solid white;
+            text-align: center;
+            font-size: 100px;
+            color: white;
+        }
+
+        .titulo{
+            text-align: center;
+            color: white;
+        }
+    </style>
+    <script>
+        let boxes = document.getElementsByClassName('boxes')
+        let jogadorAtual = 'X'
+        let jogo = ['','','','','','','','']
+        let combinacoes = [[0,1,2],[3,4,5],[6,7,8],[0,3,6],[1,4,7],[2,5,8],[0,4,8],[2,4,6]]
+
+        function trocarTurno () {
+            if (jogadorAtual === 'X') {
+                jogadorAtual = 'O'
+                // alert ('Vez do jogador: O ')
+            } else {
+                jogadorAtual = 'X'
+                // alert ('Vez do jogador: X')
+            }
+        }
+        
+        for (let i = 0; i < boxes.length; i++) {
+            let box = boxes[i];
+
+            box.addEventListener('click', function () {
+                if (box.innerHTML === '') {
+                    box.innerHTML = jogadorAtual
+                    jogo[i] = jogadorAtual
+                    trocarTurno()
+                    console.log(jogo);   
+                }
+            })    
+        }
+    </script>
+</body>
+</html>
