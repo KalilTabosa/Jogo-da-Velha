@@ -55,16 +55,6 @@
         let jogadorAtual = 'X'
         let jogo = ['','','','','','','','']
         let combinacoes = [[0,1,2],[3,4,5],[6,7,8],[0,3,6],[1,4,7],[2,5,8],[0,4,8],[2,4,6]]
-
-        function trocarTurno () {
-            if (jogadorAtual === 'X') {
-                jogadorAtual = 'O'
-                // alert ('Vez do jogador: O ')
-            } else {
-                jogadorAtual = 'X'
-                // alert ('Vez do jogador: X')
-            }
-        }
         
         for (let i = 0; i < boxes.length; i++) {
             let box = boxes[i];
@@ -78,6 +68,69 @@
                 }
             })    
         }
+
+        function trocarTurno () {
+            if (jogadorAtual === 'X') {
+                jogadorAtual = 'O'
+                // alert ('Vez do jogador: O ')
+            } else {
+                jogadorAtual = 'X'
+                // alert ('Vez do jogador: X')
+            }
+        }
+
+        function checarVencedor() {
+            if (jogo[0] === 'X' && jogo[1] === 'X' && jogo[2] === 'X') {
+               alert('O jogador: X venceu')
+
+            } if (jogo[0] === 'O' && jogo[1] === 'O' && jogo[2] === 'O') {
+                alert('O jogador: O Venceu')
+
+            } if (jogo[3] === 'X' && jogo[4] === 'X' && jogo[5] === 'X') {
+                alert('O jogador: X venceu')
+
+            } if (jogo[3] === 'O' && jogo[4] === 'O' && jogo[5] === 'O') {
+                alert('O jogador: O Venceu')
+
+            } if (jogo[6] === 'X' && jogo[7] === 'X' && jogo[8] === 'X') {
+                alert('O jogador: X venceu')
+
+            } if (jogo[6] === 'O' && jogo[7] === 'O' && jogo[8] === 'O') {
+                alert('O jogador: O Venceu')
+
+            } if (jogo[0] === 'X' && jogo[3] === 'X' && jogo[6] === 'X') {
+                alert('O jogador: X venceu')
+
+            } if (jogo[0] === 'O' && jogo[3] === 'O' && jogo[6] === 'O') {
+                alert('O jogador: O Venceu')
+
+            } if (jogo[1] === 'X' && jogo[4] === 'X' && jogo[7] === 'X') {
+                alert('O jogador: X venceu')
+
+            } if (jogo[1] === 'O' && jogo[4] === 'O' && jogo[7] === 'O') {
+                alert('O jogador: O Venceu')
+
+            } if (jogo[2] === 'X' && jogo[5] === 'X' && jogo[8] === 'X') {
+                alert('O jogador: X venceu')
+ 
+            } if (jogo[2] === 'O' && jogo[5] === 'O' && jogo[8] === 'O') {
+                alert('O jogador: O Venceu')
+
+            } if (jogo[0] === 'X' && jogo[4] === 'X' && jogo[8] === 'X') {
+                alert('O jogador: X venceu')
+
+            } if (jogo[0] === 'O' && jogo[4] === 'O' && jogo[8] === 'O') {
+                alert('O jogador: O Venceu')
+
+            } if (jogo[2] === 'X' && jogo[4] === 'X' && jogo[6] === 'X') {
+                alert('O jogador: X venceu')
+
+            } if (jogo[2] === 'O' && jogo[4] === 'O' && jogo[6] === 'O') {
+                alert('O jogador: O Venceu')
+ 
+            }
+        }
+
     </script>
 </body>
 </html>
