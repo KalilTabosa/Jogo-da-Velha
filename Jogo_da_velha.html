@@ -12,6 +12,8 @@
         Jogo Da Velha
     </h1>
 
+    <p id="jogador"></p>
+  
     <div class='pai'>
         <div class='boxes'></div>
         <div class='boxes'></div>
@@ -24,10 +26,12 @@
         <div class='boxes'></div>
     </div>
 
+    <p id='texto'></p>
+
     <style>
 
         body{
-            background-color: aquamarine;
+          background-color: black;
         }
         .pai{
             display: flex;
@@ -49,84 +53,129 @@
             text-align: center;
             color: white;
         }
+
+        #texto{
+            text-align: center;
+            font-size: 30px;
+            color: white;
+        }
+
+        #jogador{
+            text-align: center;
+            font-size: 25px;
+            color: white;
+        }
     </style>
     <script>
+        let jogo = ['','','','','','','','']
+        let texto = document.getElementById('texto')
+        let jogador = document.getElementById('jogador')
+        let contador = 0
         let boxes = document.getElementsByClassName('boxes')
         let jogadorAtual = 'X'
-        let jogo = ['','','','','','','','']
-        let combinacoes = [[0,1,2],[3,4,5],[6,7,8],[0,3,6],[1,4,7],[2,5,8],[0,4,8],[2,4,6]]
+
+        jogador.innerHTML = 'Vez do jogador X'
         
         for (let i = 0; i < boxes.length; i++) {
             let box = boxes[i];
+            let alguemGanhou = checarVencedor()
+
 
             box.addEventListener('click', function () {
                 if (box.innerHTML === '') {
                     box.innerHTML = jogadorAtual
                     jogo[i] = jogadorAtual
-                    checarVencedor()
-                    trocarTurno() 
+                    let alguemGanhou = checarVencedor()
+                    trocarTurno()
+                    if (!alguemGanhou) {
+                        empate()
+                    }
                 }
+                contador++
+                console.log(contador);
             })    
+        }
+
+        function empate() {
+            if ((contador === 8)) {
+                texto.innerHTML = 'Empatou'
+            }
         }
 
         function trocarTurno () {
             if (jogadorAtual === 'X') {
                 jogadorAtual = 'O'
-                // alert ('Vez do jogador: O ')
+                jogador.innerHTML = 'Vez do jogador O'
             } else {
                 jogadorAtual = 'X'
-                // alert ('Vez do jogador: X')
+                jogador.innerHTML = 'Vez do jogador X'
             }
         }
 
         function checarVencedor() {
             if (jogo[0] === 'X' && jogo[1] === 'X' && jogo[2] === 'X') {
-               alert('O jogador: X venceu')
+                texto.innerHTML = 'O jogador X ganhou'
+                return true
 
             } if (jogo[0] === 'O' && jogo[1] === 'O' && jogo[2] === 'O') {
-                alert('O jogador: O Venceu')
+                texto.innerHTML = 'O jogador O ganhou'
+                return true
 
             } if (jogo[3] === 'X' && jogo[4] === 'X' && jogo[5] === 'X') {
-                alert('O jogador: X venceu')
+                texto.innerHTML = 'O jogador X ganhou'
+                return true
 
             } if (jogo[3] === 'O' && jogo[4] === 'O' && jogo[5] === 'O') {
-                alert('O jogador: O Venceu')
+                texto.innerHTML = 'O jogador O ganhou'
+                return true
 
             } if (jogo[6] === 'X' && jogo[7] === 'X' && jogo[8] === 'X') {
-                alert('O jogador: X venceu')
+                texto.innerHTML = 'O jogador X ganhou'
+                return true
 
             } if (jogo[6] === 'O' && jogo[7] === 'O' && jogo[8] === 'O') {
-                alert('O jogador: O Venceu')
+                texto.innerHTML = 'O jogador O ganhou'
+                return true
 
             } if (jogo[0] === 'X' && jogo[3] === 'X' && jogo[6] === 'X') {
-                alert('O jogador: X venceu')
+                texto.innerHTML = 'O jogador X ganhou'
+                return true
 
             } if (jogo[0] === 'O' && jogo[3] === 'O' && jogo[6] === 'O') {
-                alert('O jogador: O Venceu')
+                texto.innerHTML = 'O jogador O ganhou'
+                return true
 
             } if (jogo[1] === 'X' && jogo[4] === 'X' && jogo[7] === 'X') {
-                alert('O jogador: X venceu')
+                texto.innerHTML = 'O jogador X ganhou'
+                return true
 
             } if (jogo[1] === 'O' && jogo[4] === 'O' && jogo[7] === 'O') {
-                alert('O jogador: O Venceu')
+                texto.innerHTML = 'O jogador O ganhou'
+                return true
 
             } if (jogo[2] === 'X' && jogo[5] === 'X' && jogo[8] === 'X') {
-                alert('O jogador: X venceu')
- 
+                texto.innerHTML = 'O jogador X ganhou'
+                return true
+
             } if (jogo[2] === 'O' && jogo[5] === 'O' && jogo[8] === 'O') {
-                alert('O jogador: O Venceu')
+                texto.innerHTML = 'O jogador O ganhou'
+                return true
 
             } if (jogo[0] === 'X' && jogo[4] === 'X' && jogo[8] === 'X') {
-                alert('O jogador: X venceu')
+                texto.innerHTML = 'O jogador X ganhou'
+                return true
 
             } if (jogo[0] === 'O' && jogo[4] === 'O' && jogo[8] === 'O') {
-                alert('O jogador: O Venceu')
+                texto.innerHTML = 'O jogador O ganhou'
+                return true
 
             } if (jogo[2] === 'X' && jogo[4] === 'X' && jogo[6] === 'X') {
-                alert('O jogador: X venceu')
+                texto.innerHTML = 'O jogador X ganhou'
+                return true
 
             } if (jogo[2] === 'O' && jogo[4] === 'O' && jogo[6] === 'O') {
-                alert('O jogador: O Venceu')
+                texto.innerHTML = 'O jogador O ganhou'
+                return true
  
             }
         }
