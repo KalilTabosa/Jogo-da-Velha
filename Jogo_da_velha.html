@@ -28,6 +28,10 @@
 
     <p id='texto'></p>
 
+    <div class="botao">
+        <button id="reset">Reiniciar o jogo</button>
+    </div>
+    
     <style>
 
         body{
@@ -65,6 +69,10 @@
             font-size: 25px;
             color: white;
         }
+
+        .botao{
+            text-align: center;
+        }
     </style>
     <script>
         let jogo = ['','','','','','','','']
@@ -75,6 +83,21 @@
         let jogadorAtual = 'X'
 
         jogador.innerHTML = 'Vez do jogador X'
+
+        reset.addEventListener('click', function () {
+            for (let i = 0; i < boxes.length; i++) {
+                boxes[i].innerHTML = ''
+                contador = 0
+                jogadorAtual = 'X'
+                jogo = [i]
+                if (texto.innerHTML === 'O jogador X ganhou' || texto.innerHTML === 'O jogador O ganhou' || texto.innerHTML === 'Empatou') {
+                    texto.innerHTML = ''
+                } else if (jogador.innerHTML === 'Vez do jogador O' || jogador.innerHTML === 'Vez do jogador X') {
+                    jogador.innerHTML = 'Vez do jogador X'
+                }
+            }
+        })
+
         
         for (let i = 0; i < boxes.length; i++) {
             let box = boxes[i];
